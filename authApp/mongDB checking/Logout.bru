@@ -1,0 +1,16 @@
+meta {
+  name: Logout User
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:4050/api/auth/logout
+  body: json
+  auth: bearer
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

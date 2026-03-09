@@ -1,0 +1,15 @@
+# Files to exclude from npm package
+.env
+.env.example
+.gitignore
+README.md
+*.log
+node_modules/
+.nyc_output/
+coverage/
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
