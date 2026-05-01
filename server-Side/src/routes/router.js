@@ -5,7 +5,7 @@ import { combinedAuthMiddleware } from "../middleware/auth.js";
 import passport from "passport";
 import { getNotifications } from "../controler/notificationController.js";
 import jwt from 'jsonwebtoken';
-const router = express.Router()
+const router = express.Router();
 
 router.get(
   "/google",
