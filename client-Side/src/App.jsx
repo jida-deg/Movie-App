@@ -9,7 +9,7 @@ import ProtectedRoute from './Authenticate/ProtectedRoute.jsx';
 import About from './Authenticate/aboutUs.jsx';
 import GoogleSuccess from './Authenticate/GoogleSuccess.jsx';
 import ForgotPassword from './Authenticate/ForgotPassword.jsx';
-import ResetPassword from './Authenticate/resetPassword.jsx';
+import ResetPassword from './Authenticate/ResetPassword.jsx';
 
 
 
