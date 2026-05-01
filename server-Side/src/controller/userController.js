@@ -1,7 +1,7 @@
-import User from "../modele/users.js"
+import User from "../model/users.js"
 import jwt from 'jsonwebtoken';
 import { sendEmail } from "../utils/sendEmail.js";
-import Notification from "../modele/notifications.js";
+import Notification from "../model/notifications.js";
 import crypto from "crypto";
 
 

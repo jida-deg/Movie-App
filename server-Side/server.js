@@ -1,11 +1,11 @@
 import express from "express";
 import dotenv from "dotenv"
-import connectDB from "./src/config/dataBase.js";
+import connectDB from "./src/config/database.js";
 import router from "./src/routes/router.js";
 import cors from 'cors'
 import session from 'express-session'
 import passport from "./src/config/passport.js";
-import Notification from "./src/modele/notifications.js";
+import Notification from "./src/model/notifications.js";
 
 const PORT = process.env.PORT || 4050
 const app=express()

@@ -1,9 +1,9 @@
 import express from "express";
 
-import { getUser, postUser, loginUser,verifyEmail, logoutUser, getCurrentUser, forgotPassword, resetPassword, } from "../controler/userController.js";
+import { getUser, postUser, loginUser,verifyEmail, logoutUser, getCurrentUser, forgotPassword, resetPassword, } from "../controller/userController.js";
 import { combinedAuthMiddleware } from "../middleware/auth.js";
 import passport from "passport";
-import { getNotifications } from "../controler/notificationController.js";
+import { getNotifications } from "../controller/notificationController.js";
 import jwt from 'jsonwebtoken';
 const router = express.Router();
 
