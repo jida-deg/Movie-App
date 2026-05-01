@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import AuthContext from '../components/AuthProvider';
 import './register.css'
-import GoogleLogin from './GoogleLogin.JSX';
+import GoogleLogin from './GoogleLogin.jsx';
 
 function SignUp() {
   const [name, setName] = useState('');

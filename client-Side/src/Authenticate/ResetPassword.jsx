@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import "./forpassword.css";
+import "./forgotPassword.css";
 
 function ResetPassword() {
   const { token } = useParams();

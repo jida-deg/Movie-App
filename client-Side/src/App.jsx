@@ -3,14 +3,13 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import MoviePage from './pages/moviePage.jsx';
 import HomePage from './pages/homePage.jsx';
 import SignIn from './Authenticate/SignIn.jsx';
-import SignUp from './Authenticate/sighnUp.jsx';
+import SignUp from './Authenticate/SignUp.jsx';
 import SignOut from './Authenticate/signOut.jsx';
 import ProtectedRoute from './Authenticate/ProtectedRoute.jsx';
 import About from './Authenticate/aboutUs.jsx';
 import GoogleSuccess from './Authenticate/GoogleSuccess.jsx';
 import ForgotPassword from './Authenticate/ForgotPassword.jsx';
 import ResetPassword from './Authenticate/ResetPassword.jsx';
-
 
 
 function App() {
