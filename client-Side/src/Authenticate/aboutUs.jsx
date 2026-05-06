@@ -1,5 +1,5 @@
 import React from 'react';
-import './aboutUs.css';
+import './aboutus.css';
 import Navbar from '../components/Navbar';
 
 export default function About() {
