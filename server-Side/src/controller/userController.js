@@ -3,6 +3,7 @@ import jwt from 'jsonwebtoken';
 import { sendEmail } from "../utils/sendEmail.js";
 import Notification from "../model/notifications.js";
 import crypto from "crypto";
+import { frontendUrl, jwtSecret } from "../config/env.js";
 
 
 export const getUser = async (req,res)=>{
@@ -43,7 +44,7 @@ export const getCurrentUser = async (req, res) => {
     // Create verification token
     const verificationToken = jwt.sign(
       { email },
-      process.env.JWT_SECRET,
+      jwtSecret,
       { expiresIn: "1d" }
     );
 
@@ -110,7 +111,7 @@ export const loginUser = async (req, res) => {
       email: user.email
     };
 
-    const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' });
+    const token = jwt.sign(payload, jwtSecret, { expiresIn: '1h' });
 
     // Set session
     req.session.userId = user._id;
@@ -157,7 +158,7 @@ export const forgotPassword = async (req, res) => {
     user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
     await user.save();
 
-    const resetLink = `${process.env.FRONTEND_URL}/reset-password/${token}`;
+    const resetLink = `${frontendUrl}/reset-password/${token}`;
 
     await sendEmail(
       email,
@@ -201,7 +202,7 @@ export const verifyEmail = async (req, res) => {
   try {
     const { token } = req.params;
 
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, jwtSecret);
 
     const user = await User.findOne({ email: decoded.email });
 

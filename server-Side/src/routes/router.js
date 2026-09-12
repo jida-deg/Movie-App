@@ -5,6 +5,7 @@ import { combinedAuthMiddleware } from "../middleware/auth.js";
 import passport from "passport";
 import { getNotifications } from "../controller/notificationController.js";
 import jwt from 'jsonwebtoken';
+import { frontendUrl, jwtSecret } from "../config/env.js";
 const router = express.Router();
 
 router.get(
@@ -14,19 +15,24 @@ router.get(
 
 router.get(
   "/google/callback",
-  passport.authenticate("google", { session: false }),
+  passport.authenticate("google", {
+    session: false,
+    failureRedirect: `${frontendUrl}/signin?error=google-authentication`
+  }),
   (req, res) => {
     // Generate JWT token for the authenticated user
     const payload = {
       userId: req.user._id,
       email: req.user.email
     };
-
-    const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' });
+    
+ 
+    const token = jwt.sign(payload, jwtSecret, { expiresIn: '1h' });
+    
 
     // Redirect to frontend route that will process OAuth results (GoogleSuccess)
     // ensure the path matches the SPA route and include the same port as dev server
-    const frontend = process.env.FRONTEND_URL.replace(/\/$/, ''); // trim trailing slash
+    const frontend = frontendUrl.replace(/\/$/, ''); // trim trailing slash
     res.redirect(`${frontend}/google-success?token=${token}&user=${encodeURIComponent(JSON.stringify({
       id: req.user._id,
       name: req.user.name,

@@ -1,4 +1,5 @@
 import jwt from 'jsonwebtoken';
+import { jwtSecret } from '../config/env.js';
 
 // JWT Authentication Middleware
 const authMiddleware = (req, res, next) => {
@@ -9,7 +10,7 @@ const authMiddleware = (req, res, next) => {
     }
 
     try {
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        const decoded = jwt.verify(token, jwtSecret);
         req.user = decoded.userId;
         next();
     } catch (err) {
@@ -32,7 +33,7 @@ const combinedAuthMiddleware = (req, res, next) => {
     
     if (token) {
         try {
-            const decoded = jwt.verify(token, process.env.JWT_SECRET);
+            const decoded = jwt.verify(token, jwtSecret);
             req.user = decoded.userId; // ✅ OK
             return next();
         } catch (err) {}

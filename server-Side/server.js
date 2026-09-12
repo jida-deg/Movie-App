@@ -6,9 +6,13 @@ import cors from 'cors'
 import session from 'express-session'
 import passport from "./src/config/passport.js";
 import Notification from "./src/model/notifications.js";
+import { frontendUrl } from "./src/config/env.js";
 
 const PORT = process.env.PORT || 4050
+
 const app=express()
+
+
 dotenv.config()
 connectDB()
 
@@ -19,14 +23,15 @@ Notification.deleteMany({ type: "login" }).then(() => {
 
 app.use(express.json())
 app.use(cors({
-    origin: process.env.FRONTEND_URL || 'http://localhost:5173',
+    origin: frontendUrl,
     credentials: true
 }));
 app.use(passport.initialize());
 
+
 // Session configuration
 app.use(session({
-    secret: process.env.SESSION_SECRET || 'your-secret-key',
+    secret: process.env.SESSION_SECRET || 'session1234secret',
     resave: false,
     saveUninitialized: false,
     cookie: {
@@ -42,7 +47,11 @@ app.use("/api/auth",router)
 app.get("/",(req,res)=>{
     res.json({ message: "MongoDB connected", status: "success" })
 })
+console.log("FRONTEND_URL:", process.env.FRONTEND_URL);
+console.log("JWT_SECRET exists:", Boolean(process.env.JWT_SECRET));
+console.log("SESSION_SECRET exists:", Boolean(process.env.SESSION_SECRET));
 
 app.listen(PORT,()=>{
     console.log(`server running under  http://localhost:${PORT}`)
 })
+
