@@ -1,7 +1,6 @@
 {
-  "installCommand": "npm install --prefix client-Side",
-  "buildCommand": "npm run build --prefix client-Side",
-  "outputDirectory": "client-Side/dist",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
   "rewrites": [
     {
       "source": "/(.*)",
