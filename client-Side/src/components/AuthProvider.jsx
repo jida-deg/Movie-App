@@ -2,6 +2,9 @@
 import React, { createContext, useState, useEffect } from "react";
 import { API_BASE } from "../config/api.js";
 
+
+
+
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
@@ -9,6 +12,13 @@ export function AuthProvider({ children }) {
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [notifications, setNotifications] = useState([]);
   // derived state: authenticated if a user object exists
+
+  const API_BASE =
+  import.meta.env.VITE_API_URL ||
+  (import.meta.env.PROD
+    ? "https://movie-app-production-a69f.up.railway.app"
+    : "http://localhost:4050");
+    
   const isAuthenticated = !!user;
 
   const api = async (path, options = {}) => {
