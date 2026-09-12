@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import "./forgotPassword.css";
+import { API_BASE } from "../config/api.js";
 
 function ResetPassword() {
   const { token } = useParams();
@@ -8,13 +9,11 @@ function ResetPassword() {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
 
-  const API = import.meta.env.VITE_API_URL || "http://localhost:4050";
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const res = await fetch(`${API}/api/auth/reset-password/${token}`, {
+      const res = await fetch(`${API_BASE}/api/auth/reset-password/${token}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ password }),

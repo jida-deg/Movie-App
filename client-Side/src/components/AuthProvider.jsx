@@ -1,5 +1,6 @@
 // src/components/AuthProvider.jsx
 import React, { createContext, useState, useEffect } from "react";
+import { API_BASE } from "../config/api.js";
 
 const AuthContext = createContext();
 
@@ -7,8 +8,6 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [notifications, setNotifications] = useState([]);
-  const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:4050";
-
   // derived state: authenticated if a user object exists
   const isAuthenticated = !!user;
 

@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 import "./forgotPassword.css"
+import { API_BASE } from "../config/api.js";
 function ForgotPassword() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-
-  const API = import.meta.env.VITE_API_URL || "http://localhost:4050";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const res = await fetch(`${API}/api/auth/forgot-password`, {
+      const res = await fetch(`${API_BASE}/api/auth/forgot-password`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
