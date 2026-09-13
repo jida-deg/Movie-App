@@ -34,7 +34,19 @@ export const getCurrentUser = async (req, res) => {
 };
  export const postUser = async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const name = typeof req.body.name === "string" ? req.body.name.trim() : "";
+    const email = typeof req.body.email === "string"
+      ? req.body.email.trim().toLowerCase()
+      : "";
+    const password = typeof req.body.password === "string" ? req.body.password : "";
+
+    if (!name || !email || !password) {
+      return res.status(400).json({ message: "Name, email, and password are required" });
+    }
+
+    if (password.length < 6) {
+      return res.status(400).json({ message: "Password must be at least 6 characters" });
+    }
 
     const existingUser = await User.findOne({ email });
     if (existingUser) {
@@ -71,7 +83,7 @@ export const getCurrentUser = async (req, res) => {
     // Create notification
     await Notification.create({
       userId: newUser._id,
-      message: "New user registered",
+      message: "welcome to our platform cinema world",
       type: "register"
     });
 
@@ -86,12 +98,24 @@ export const getCurrentUser = async (req, res) => {
 
   } catch (error) {
     console.error(`Server error: ${error.message}`);
+    if (error.name === "ValidationError" || error.code === 11000) {
+      return res.status(400).json({ message: "Invalid registration details" });
+    }
     res.status(500).json({ message: "Server error" });
   }
 };
 export const loginUser = async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const email = typeof req.body.email === "string"
+      ? req.body.email.trim().toLowerCase()
+      : "";
+    const password = typeof req.body.password === "string"
+      ? req.body.password
+      : "";
+
+    if (!email || !password) {
+      return res.status(400).json({ message: "Email and password are required" });
+    }
 
     // Check if user exists
     const user = await User.findOne({ email });

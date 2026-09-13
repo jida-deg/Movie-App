@@ -11,4 +11,8 @@ export const getRequiredEnv = (name) => {
 };
 
 export const jwtSecret = getRequiredEnv("JWT_SECRET");
-export const frontendUrl = getRequiredEnv("FRONTEND_URL");
+export const frontendUrls = getRequiredEnv("FRONTEND_URL")
+  .split(",")
+  .map((url) => url.trim())
+  .filter(Boolean);
+export const frontendUrl = frontendUrls[0];

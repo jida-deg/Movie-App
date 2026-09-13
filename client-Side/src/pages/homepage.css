@@ -329,3 +329,85 @@ li:hover {
     transform: scale(1.05);      /* slight zoom effect */
 }
 
+@media (max-width: 768px) {
+  .navbarIn,
+  .inSection2A {
+    flex-direction: column;
+  }
+
+  .navbarIn {
+    align-items: stretch;
+  }
+
+  .navbarList {
+    justify-content: center;
+  }
+
+  .section1 {
+    min-height: 75vh;
+  }
+
+  .pageDiscription {
+    padding: 0 1rem;
+  }
+
+  .section2Descibe {
+    margin-top: 60px;
+    text-align: center;
+  }
+
+  .section2ImagesA {
+    width: min(100% - 2rem, 600px);
+  }
+
+  .section2Images {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: min(100% - 2rem, 700px);
+  }
+}
+
+@media (max-width: 480px) {
+  a {
+    font-size: 16px;
+  }
+
+  .navbarList {
+    gap: 10px;
+  }
+
+  .pageDiscription .page {
+    margin-top: 100px;
+  }
+
+  .pageDiscription h3 {
+    font-size: 1rem;
+  }
+
+  .pageDiscription h2 {
+    font-size: 1.25rem;
+  }
+
+  .section2 h2 {
+    font-size: 1.5rem;
+  }
+
+  .section2ImagesA {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: min(100% - 1rem, 420px);
+    margin-bottom: 60px;
+  }
+
+  .section2Images {
+    width: min(100% - 1rem, 420px);
+    margin-bottom: 60px;
+  }
+
+  .sectio4-para {
+    padding: 12px 14px;
+  }
+
+  .sectio4-para p {
+    gap: 12px;
+  }
+}
+

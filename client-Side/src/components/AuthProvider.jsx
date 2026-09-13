@@ -140,7 +140,7 @@ const signIn = async (email, password) => {
       return true;
     } catch (err) {
       console.error(err);
-      return false;
+      throw err;
     }
   };
 

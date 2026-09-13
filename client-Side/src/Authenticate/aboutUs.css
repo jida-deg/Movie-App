@@ -54,3 +54,21 @@
   font-size: 15px;
   opacity: 0.85;
 }
+
+@media (max-width: 480px) {
+  .about {
+    padding: 28px 16px;
+  }
+
+  .about-text {
+    margin-bottom: 28px;
+  }
+
+  .about-cards {
+    gap: 14px;
+  }
+
+  .card {
+    width: 100%;
+  }
+}

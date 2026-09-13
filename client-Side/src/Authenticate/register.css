@@ -93,3 +93,19 @@
 .auth-container p a:hover {
   text-decoration: underline;
 }
+
+@media (max-width: 480px) {
+  .auth-container {
+    width: calc(100% - 2rem);
+    margin-top: 24px;
+    margin-bottom: 24px;
+  }
+
+  .auth-container h2 {
+    font-size: 24px;
+  }
+
+  .auth-container form {
+    gap: 14px;
+  }
+}

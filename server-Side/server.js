@@ -6,7 +6,7 @@ import cors from 'cors'
 import session from 'express-session'
 import passport from "./src/config/passport.js";
 import Notification from "./src/model/notifications.js";
-import { frontendUrl } from "./src/config/env.js";
+import { frontendUrls } from "./src/config/env.js";
 
 const PORT = process.env.PORT || 4050
 
@@ -23,7 +23,7 @@ Notification.deleteMany({ type: "login" }).then(() => {
 
 app.use(express.json())
 app.use(cors({
-    origin: frontendUrl,
+    origin: frontendUrls,
     credentials: true
 }));
 app.use(passport.initialize());

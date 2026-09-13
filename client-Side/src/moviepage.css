@@ -11,8 +11,6 @@
 justify-content: space-between; 
 align-items: center;
 text-align: center;
-
-
 }
 
 
@@ -196,4 +194,86 @@ text-align: center;
     cursor: pointer;
     transition: color 0.3s ease, transform 0.2s ease;
     color:#ece1a1 ;
+}
+
+.notification-icon {
+  position: relative;
+  cursor: pointer;
+}
+
+.notification-count {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  min-width: 18px;
+  padding: 2px 5px;
+  border-radius: 999px;
+  background: #ef4444;
+  color: #fff;
+  font-size: 10px;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.notification-dropdown {
+  position: absolute;
+  top: 2rem;
+  right: 0;
+  z-index: 10;
+  width: min(280px, calc(100vw - 2rem));
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: #fff;
+  color: #111827;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+  .insideApp {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .app-header {
+    margin-left: 0;
+    margin-bottom: 1rem;
+  }
+
+  .navbarListA {
+    justify-content: center;
+  }
+
+  .movie-overlay {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-title {
+    font-size: 2rem;
+  }
+
+  .app-subtitle {
+    font-size: 1rem;
+  }
+
+  .main-content {
+    gap: 1.25rem;
+  }
+
+  .movies-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .search-container {
+    max-width: none;
+  }
+
+  .search-input {
+    min-width: 0;
+  }
 }
