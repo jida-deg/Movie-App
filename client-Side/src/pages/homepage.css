@@ -710,6 +710,39 @@ li:hover {
   }
 }
 
+/* Keep footer content inside the viewport on smaller screens. */
+@media (max-width: 768px) {
+  .footer {
+    width: calc(100% - 2rem);
+    max-width: none;
+    height: auto;
+    min-height: 0;
+    margin: 40px auto 16px;
+    padding: 20px 16px;
+  }
+
+  .footerIn {
+    width: 100%;
+    padding: 0;
+    gap: 24px;
+    overflow-wrap: anywhere;
+  }
+
+  .footerIn > div {
+    width: 100%;
+  }
+
+  .footerIn p,
+  .footerIn a {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .footerIn a {
+    display: inline-block;
+  }
+}
+
 /* =========================
    MOBILE / ANDROID
    Up to 768px
